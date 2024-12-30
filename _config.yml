@@ -23,7 +23,7 @@ navigation:                # accepts {file, title, url, icon, sidebaricon}
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
   - {title: Mail, icon: envelope, url: "mailto:rjr6zk@virginia.edu"}
   - {title: Github, icon: github, url: "https://github.com/baoware"}
-  - {title: Linkedin, icon: linkedin, url: "https://linkedin.com/in/bao-duong-5126b123b"}
+  - {title: Linkedin, icon: "fa-brands fa-linkedin", url: "https://linkedin.com/in/bao-duong-5126b123b"}
 
 comments:
 #  disqus_shortname: ""    # see https://disqus.com/
