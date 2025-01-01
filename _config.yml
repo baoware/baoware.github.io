@@ -17,6 +17,7 @@ minimal: false             # use a dark header
 
 navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "index.html"}
+  - {file: "gallery.html"}
   - {title: "Resume", url: "https://baoware.github.io/duong.pdf"}
   - {file: "README.md"}
 
