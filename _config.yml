@@ -6,6 +6,12 @@ lang: "en"
 excerpt_separator: "\n\n\n"
 date_format: "%B %d, %Y"
 
+# Gallery posts
+collections:
+  gallery_posts:
+    output: true
+    permalink: /gallery/:title/
+
 # Layout
 
 show_excerpts: true        # show article excerpts on the home page
