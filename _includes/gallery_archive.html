@@ -6,7 +6,7 @@
     {{ site.gallery_posts | inspect }}
     </pre>
     
-    {% for post in site.gallery_posts %}
+    {% for post in site.galleryPosts %}
     <li>
       <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
       <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
