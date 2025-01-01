@@ -6,14 +6,6 @@
     {{ site.gallery_posts | inspect }}
     </pre>
     
-    {% for post in site.galleryPosts %}
-    <li>
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      {% if post.image %}
-      <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" style="max-width: 200px; display: block;">
-      {% endif %}
-    </li>
-    {% endfor %}
+  
   </ul>
 </article>
