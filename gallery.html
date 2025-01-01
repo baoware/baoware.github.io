@@ -1,1 +1,11 @@
+---
+layout: default
+title: "Gallery"
+permalink: /gallery/
+---
 
+{% if site.show_excerpts %}
+  {% include home.html %}
+{% else %}
+  {% include gallery_archive.html title="Posts" %}
+{% endif %}
