@@ -5,7 +5,7 @@ layout: post
 categories: media
 ---
 
-![Golden Ornaments](/assets/images/thailand/Copy of 000005.jpeg)
+![Golden Ornaments](/_galleryPosts/assets/images/thailand/Copy of 000005.jpeg)
 
 
 ## MathJax
