@@ -5,7 +5,7 @@ layout: post
 categories: media
 ---
 
-![Swiss Alps](/assets/images/thailand/Copy_of_000005.jpg)
+![Golden Ornaments](/assets/images/thailand/134D45C1-A78F-40D8-AF9E-C171F3CCC75A_1_102_o.jpeg)
 
 
 ## MathJax
