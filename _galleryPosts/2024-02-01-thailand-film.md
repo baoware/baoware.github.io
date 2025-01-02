@@ -5,7 +5,7 @@ layout: post
 categories: media
 ---
 
-![Swiss Alps](/assets/images/thailand/Copy of 000005.jpg)
+![Swiss Alps](/assets/images/thailand/Copy_of_000005.jpg)
 
 
 ## MathJax
