@@ -49,7 +49,7 @@ categories: media
 </a>
 
 <div style="text-align: center;">
-   <a href="//assets/images/vietnam/CEBB715D-8F93-4659-A8B3-51BB97116308_1_105_c.jpeg" data-fancybox="vietnamii-gallery">
+   <a href="/assets/images/vietnam/CEBB715D-8F93-4659-A8B3-51BB97116308_1_105_c.jpeg" data-fancybox="vietnamii-gallery">
       <img src="/assets/images/vietnam/CEBB715D-8F93-4659-A8B3-51BB97116308_1_105_c.jpeg" alt="View from Cliff II" style="max-width: 66.666%; height: auto;">
    </a>
 </div>
