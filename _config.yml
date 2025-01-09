@@ -12,6 +12,12 @@ collections:
     output: true
     permalink: /gallery/:title/
 
+# Writings posts
+collections:
+  writingsPosts:
+    output: true
+      permalink: /writings/:title/
+
 # Layout
 
 show_excerpts: true        # show article excerpts on the home page
@@ -24,6 +30,7 @@ minimal: false             # use a dark header
 navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "index.html", title: "Projects", url: "/" }
   - {file: "gallery.html", title: "Gallery", url: "/gallery/" }
+  - {file: "writings.html", title: "Writings", url: "/writings/"}
   - {title: "Resume", url: "https://baoware.github.io/duong.pdf"}
   - {file: "About.md", title: "About", url: "/about"}
 
