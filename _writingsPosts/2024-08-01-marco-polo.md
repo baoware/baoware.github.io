@@ -7,9 +7,11 @@ layout: post
   <p style="padding-left: 0pt;text-indent: 30pt;line-height: 200%;text-align: justify;">
     You were born in a quaint village near the Palace of Versailles. Your father sold souvenirs there and your mother was a maid in a Chateau at a Cabernet-Sauvignon vineyard. In the summers, you’d get to shadow your father in Versailles. He sold souvenirs of every kind, miniature plastic Eiffel Towers and Arc de Triomphes, rubber keychains of baguettes and berets, fridge magnets of art from Monet, Gauguin and Magritte, and even Matryoshka dolls of French leaders, Napoleon to de Gaulle, which he imported from some wood shop in St. Petersburg, Russia. Moreover, instead of play- acting as the Resistance around the drystone walls of your village, you were prowling the gates of Versailles with other souvenir shop kids: Petit Quasi (affectionately nicknamed  for  his  hunchback)  and  Julien.  Your  daily  shenanigans  included pickpocketing, misdirecting lovebirds from photo-ops, and disrupting tours. When the guards finally catch you, you’d be sent back to your stall, where your disappointed father punished you with reading Napoleon’s biography.
   </p>
-  <p style="padding-left: 35pt;text-indent: 0pt;line-height: 200%;text-align: left;">“Napoleon was born in 1769 on an island named Corsica.” “Correct.”</p>
-  <p style="padding-left: 35pt;text-indent: 0pt;line-height: 200%;text-align: left;">“He died in 18… umm… 1821?” “Good, and where did he die?”</p>
-  <p style="padding-left: 0pt;text-indent: 30pt;line-height: 200%;text-align: left;">“On an island named St. Helena. Also, papa! Papa! He said, ‘A man’s greatness is measured from his head to the sky.’”
+  <p style="padding-left: 35pt;text-indent: 0pt;line-height: 200%;text-align: left;">“Napoleon was born in 1769 on an island named Corsica.” </p>
+  <p style="padding-left: 35pt;text-indent: 0pt;line-height: 200%;text-align: left;"> “Correct.” </p>
+  <p style="padding-left: 35pt;text-indent: 0pt;line-height: 200%;text-align: left;">“He died in 18… umm… 1821?”</p>
+  <p style="padding-left: 35pt;text-indent: 0pt;line-height: 200%;text-align: left;"> “Good, and where did he die?” </p>
+  <p style="padding-left: 0pt;text-indent: 30pt;line-height: 200%;text-align: justify;">“On an island named St. Helena. Also, papa! Papa! He said, ‘A man’s greatness is measured from his head to the sky.’”
   </p>
   <p style="padding-left: 35pt;text-indent: 0pt;line-height: 15pt;text-align: left;">Your father was short, so he liked that.</p>
   <p style="padding-top: 4pt;padding-left: 0pt;text-indent: 30pt;line-height: 200%;text-align: justify;">
