@@ -16,7 +16,7 @@ collections:
 collections:
   writingsPosts:
     output: true
-      permalink: /writings/:title/
+    permalink: /writings/:title/
 
 # Layout
 
