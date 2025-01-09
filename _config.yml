@@ -6,7 +6,7 @@ lang: "en"
 excerpt_separator: "\n\n\n"
 date_format: "%B %d, %Y"
 
-# collections
+# Collections
 collections:
   galleryPosts:
     output: true
