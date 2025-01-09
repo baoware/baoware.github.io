@@ -50,7 +50,7 @@ layout: post
   <p style="padding-left: 35pt;text-indent: 0pt;text-align: justify;">“You are progressing nicely along the Eight Fold Path.”</p>
   <p style="padding-left: 35pt;text-indent: 0pt;text-align: justify;">“Thank you, Avalokitesvara.”</p>
   <p style="padding-left: 35pt;text-indent: 0pt;text-align: justify;">“But, I sense that you’re having trouble with attaining Right Mindfulness?”</p>
-  <p style="padding-left: 0pt;text-indent: 35pt;text-align: justify;">“Yes. I can’t let go of the past yet for some reason. And all this time that I’ve been exploring the world and feeling free, I’ve been feeling lonely as well…”</p>
+  <p style="padding-left: 0pt;text-indent: 35pt; line-height: 200%; text-align: justify;">“Yes. I can’t let go of the past yet for some reason. And all this time that I’ve been exploring the world and feeling free, I’ve been feeling lonely as well…”</p>
   <p style="padding-left: 35pt;text-indent: 0pt;text-align: justify;">“You don’t have to stay here. You can always come back when you’re ready.”</p>
   <p style="padding-left: 35pt;text-indent: 0pt;text-align: justify;">“I’ll give it one last go, Avalokitesvara.”</p>
   <p style="padding-left: 35pt;text-indent: 0pt;text-align: justify;">“No rush, child. No one’s path is ever straightforward.”</p>
