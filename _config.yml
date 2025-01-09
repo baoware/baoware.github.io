@@ -6,14 +6,11 @@ lang: "en"
 excerpt_separator: "\n\n\n"
 date_format: "%B %d, %Y"
 
-# Gallery posts
+# collections
 collections:
   galleryPosts:
     output: true
     permalink: /gallery/:title/
-
-# Writings posts
-collections:
   writingsPosts:
     output: true
     permalink: /writings/:title/
