@@ -14,7 +14,8 @@ If the ICC attempts to investigate, arrest, detain or prosecute a protected pers
 
 Upon enactment, the bill rescinds all funds appropriated for the ICC and prohibits the subsequent use of appropriated funds for the ICC.
 
->  WASHINGTON, Jan 9 (Reuters) - The U.S. House of Representatives voted on Thursday to sanction the International Criminal Court in protest at its arrest warrants for Israeli Prime Minister Benjamin Netanyahu and his former defense minister over Israel's campaign in Gaza.
+WASHINGTON, Jan 9 (Reuters) - The U.S. House of Representatives voted on Thursday to sanction the International Criminal Court in protest at its arrest warrants for Israeli Prime Minister Benjamin Netanyahu and his former defense minister over Israel's campaign in Gaza.
+
 The vote was 243 to 140 in favor of the "Illegitimate Court Counteraction Act," which would sanction any foreigner who investigates, arrests, detains or prosecutes U.S. citizens or those of an allied country, including Israel, who are not members of the court.
 
 <div id="svg-container" style="max-width: 100%; height: auto;">
