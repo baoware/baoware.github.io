@@ -61,7 +61,7 @@ Webscraper and interactive chart for House votes.
 
   // Function to create the legend
   function generateLegend(container) {
-    const titlePadding = 25;  // padding between title and entries
+    const titlePadding = 30;  // padding between title and entries
     const entrySpacing = 30;  // spacing between legend entries
     const entryRadius = 5;    // radius of legend entry marks
     const labelOffset = 30;    // additional horizontal offset of text labels
@@ -104,7 +104,7 @@ Webscraper and interactive chart for House votes.
       .attr('y', 0)
       .attr('fill', 'white')
       .attr('font-family', 'Helvetica Neue, Arial')
-      .attr('font-size', '26px')
+      .attr('font-size', '28px')
       .attr('class', 'Description')
   };
 
@@ -126,7 +126,7 @@ Webscraper and interactive chart for House votes.
 
   // Generate the tooltip
   const tooltip = svg.append('g')
-    .attr('transform', 'translate(800, 25)')
+    .attr('transform', 'translate(800, 30)')
     .call(generateTooltip);
 
   // Interaction with the circles
