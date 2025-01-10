@@ -2,6 +2,7 @@
 title: "House Vote Scraper"
 layout: post
 ---
+Webscraper and interactive chart for House votes.
 
 
 
@@ -15,3 +16,136 @@ layout: post
 
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+  fetch('/assets/projects/house-vote-scraper/hr23-data.json')
+    .then(response => response.json())
+    .then(data => {
+      window.json_data = data;
+    });
+  
+  // Pass voting data to the script
+  const data = window.json_data;
+
+  // Parse json_data as an Array
+  const dataString = JSON.stringify(data);
+  const array = JSON.parse(dataString);
+
+  // Select the SVG using D3
+  var svg = d3.select("#svg-container svg")
+    .attr("width", 1300)
+    .attr("height", 600);
+
+  // Color scale for parties
+  const color = d3.scaleOrdinal()
+    .domain(["D", "R"])
+    .range(["#00AEF3", "#E81B23"])
+    .unknown("purple");
+
+  // Function to determine fill color based on vote
+  function fill(d) {
+    if (d.Vote === "Yea") {
+      return color(d.Party);
+      } else if (d.Vote === "Nay") {
+      return "white";
+    } else {
+      return "black";
+    }
+  }
+
+  // Data for the legend
+  keys = [
+      { index: 0, Representative: "Independent and Voted Yea", Party: "I", Vote: "Yea" },
+      { index: 1, Representative: "Democrat and Voted Nay", Party: "D", Vote: "Nay" },
+      { index: 2, Representative: "Republican and Did Not Vote", Party: "R", Vote: "Did Not Vote"}
+  ];
+
+  // Function to create the legend
+  function generateLegend(container) {
+    const titlePadding = 25;  // padding between title and entries
+    const entrySpacing = 30;  // spacing between legend entries
+    const entryRadius = 5;    // radius of legend entry marks
+    const labelOffset = 30;    // additional horizontal offset of text labels
+    const baselineOffset = 4; // text baseline offset, depends on radius and font size
+
+    const title = container.append('text')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('fill', 'black')
+      .attr('font-family', 'Helvetica Neue, Arial')
+      .attr('font-weight', 'bold')
+      .attr('font-size', '14px')
+      .text('Legend');
+
+    const entries = container.selectAll('g')
+      .data(keys)
+      .join('g')
+      .attr('transform', d => `translate(0, ${titlePadding + d.index * entrySpacing})`);
+
+    const symbols = entries.append('circle')
+      .attr('cx', 17) // <-- offset symbol x-position by radius
+      .attr('r', 10)
+      .attr("stroke", d => color(d.Party))
+      .attr("stroke-width", 4)
+      .attr("fill", d => fill(d));
+
+    const labels = entries.append('text')
+      .attr('x', 2 * entryRadius + labelOffset) // <-- place labels to the left of symbols
+      .attr('y', baselineOffset) // <-- adjust label y-position for proper alignment
+      .attr('fill', 'black')
+      .attr('font-family', 'Helvetica Neue, Arial')
+      .attr('font-size', '12px')
+      .style('user-select', 'none') // <-- disallow selectable text
+      .text(d => d.Representative);
+  };
+
+  function generateTooltip(container) {
+    const title = container.append('text')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('fill', 'black')
+      .attr('font-family', 'Helvetica Neue, Arial')
+      .attr('font-size', '20px')
+      .attr('class', 'Description')
+  };
+
+
+  // Data labeling of the circles
+  const votes = svg
+    .selectAll("circle")
+    .data(array)
+    .join("circle")
+    .attr("stroke", d => color(d.Party))
+    .attr("stroke-width", 4)
+    .attr("fill", d => fill(d))
+    .attr("transform", "translate(50,0)");
+
+  // Generate the legend
+  const legend = svg.append('g')
+    .attr('transform', 'translate(0, 10)')
+    .call(generateLegend);
+
+  // Generate the tooltip
+  const tooltip = svg.append('g')
+    .attr('transform', 'translate(950, 30)')
+    .call(generateTooltip);
+
+  // Interaction with the circles
+  votes
+    .on('mouseover', function(event, d) {
+      d3.select(this).attr('stroke-width', 8);
+
+      const text = d.Representative+', '+d.District;
+      tooltip.select('.Description').text(text);
+
+      // tooltip.style('display', 'block');
+    })
+    .on('mouseout', function() {
+      d3.select(this).attr('stroke-width', 4);
+      // tooltip.style('display', 'none');
+    })
+    .on('click', function(event,d){
+      if (d.opensecrets_url) {
+        window.open(d.opensecrets_url, '_blank');
+      }
+    });
+</script>
