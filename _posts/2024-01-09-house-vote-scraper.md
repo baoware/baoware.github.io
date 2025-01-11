@@ -163,9 +163,9 @@ layout: post
     });
 </script>
 
-### Analysis
+#### Analysis
 > WASHINGTON, Jan 9 (Reuters) - The U.S. House of Representatives voted on Thursday to sanction the International Criminal Court in protest at its arrest warrants for Israeli Prime Minister Benjamin Netanyahu and his former defense minister over Israel's campaign in Gaza.
 > The vote was 243 to 140 in favor of the "Illegitimate Court Counteraction Act," which would sanction any foreigner who investigates, arrests, detains or prosecutes U.S. citizens or those of an allied country, including Israel, who are not members of the court.
 > Forty-five Democrats joined 198 Republicans in backing the bill. No Republican voted against it.
 
-The majority of Democrats did not back the bill. Out of the 45 Democrats who did vote for it, 32 received campaign contributions from the American Israel Public Affairs Committee (AIPAC). The minimum contributions towards a Representative was $13,800 to Lucy McBath, GA-6, and the maximum contributions towards a Representative was $679,448 to Josh Gottheimer, NJ-5. Overall, the contributions averaged to around $180,000 with a median of $138,000. Furthermore, for 27 of the 32 Democrats who received funding, AIPAC was their largest contributor.
+The majority of Democrats did not back the bill. Out of the 45 Democrats who did vote for it, 32 received campaign contributions from the American Israel Public Affairs Committee (AIPAC). The minimum contributions towards a Representative was $13,800 to Lucy McBath, GA-6, and the maximum contributions towards a Representative was $679,448 to Josh Gottheimer, NJ-5. Overall, the contributions averaged to around $180,000 with a median of $138,000. Furthermore, for 27 of the 32 Democrats who received funding,  AIPAC was their largest contributor.
