@@ -36,7 +36,7 @@ categories: media
 </a>
 
 <a href="/assets/images/virginiaii/DSCF1619.jpg" data-fancybox="virginiaii-gallery">
-  <img src="/assets/images/virginiaii/DSCF1619.jpg.jpg" alt="Snowy Road" style="max-width:100%; height:auto;">
+  <img src="/assets/images/virginiaii/DSCF1619.jpg" alt="Homer" style="max-width:100%; height:auto;">
 </a>
 
 <div style="text-align:center">
