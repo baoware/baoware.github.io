@@ -36,7 +36,11 @@ categories: media
 </a>
 
 <a href="/assets/images/virginiaii/DSCF1619.jpg" data-fancybox="virginiaii-gallery">
-  <img src="/assets/images/virginiaii/DSCF1619.jpg" alt="Homer" style="max-width:100%; height:auto;">
+  <img src="/assets/images/virginiaii/DSCF1619.jpg" alt="Homer I" style="max-width:100%; height:auto;">
+</a>
+
+<a href="/assets/images/virginiaii/DSCF0399.JPG" data-fancybox="virginiaii-gallery">
+  <img src="/assets/images/virginiaii/DSCF0399.JPG" alt="Homer II" style="max-width:100%; height:auto;">
 </a>
 
 <div style="text-align:center">
@@ -52,6 +56,12 @@ categories: media
 <a href="/assets/images/virginiaii/DSCF0275.jpg" data-fancybox="virginiaii-gallery">
   <img src="/assets/images/virginiaii/DSCF0275.jpg" alt="Dunk" style="max-width:100%; height:auto;">
 </a>
+
+<div style="text-align:center">
+  <a href="/assets/images/virginiaii/DSCF0453.JPG" data-fancybox="virginiaii-gallery">
+    <img src="/assets/images/virginiaii/DSCF0453.JPG" alt="Rotunda V" style="max-width: 66.666%; height:auto;">
+  </a>
+</div>
 
 <a href="/assets/images/virginiaii/DSCF0422.JPG" data-fancybox="virginiaii-gallery">
   <img src="/assets/images/virginiaii/DSCF0422.JPG" alt="Dog I" style="max-width:100%; height:auto;">
