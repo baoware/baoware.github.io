@@ -103,9 +103,9 @@ The majority of Democrats did not back the bill. Out of the 45 Democrats who did
 
   // Function to determine fill color based on vote
   function fill(d) {
-    if (d.Vote === "Yea") {
+    if (d.Vote === "Yea" || d.Vote === "Aye") {
       return color(d.Party);
-      } else if (d.Vote === "Nay") {
+      } else if (d.Vote === "Nay" || d.Vote === "No") {
       return "white";
     } else {
       return "black";
@@ -170,7 +170,7 @@ The majority of Democrats did not back the bill. Out of the 45 Democrats who did
 
 
   // Data labeling of the circles
-  const votes = svg_hr23
+  const votes_hr23 = svg_hr23
     .selectAll("circle")
     .data(array)
     .join("circle")
@@ -180,17 +180,17 @@ The majority of Democrats did not back the bill. Out of the 45 Democrats who did
     .attr("transform", "translate(40,20)");
 
   // Generate the legend
-  const legend = svg_hr23.append('g')
+  const legend_hr23 = svg_hr23.append('g')
     .attr('transform', 'translate(0, 20)')
     .call(generateLegend);
 
   // Generate the tooltip
-  const tooltip = svg_hr23.append('g')
+  const tooltip_hr23 = svg_hr23.append('g')
     .attr('transform', 'translate(800, 30)')
     .call(generateTooltip);
 
   // Data labeling of the circles
-  const votes = svg_hr4763
+  const votes_hr4763 = svg_hr4763
     .selectAll("circle")
     .data(array)
     .join("circle")
@@ -200,17 +200,36 @@ The majority of Democrats did not back the bill. Out of the 45 Democrats who did
     .attr("transform", "translate(40,20)");
 
   // Generate the legend
-  const legend = svg_hr4763.append('g')
+  const legend_hr4763 = svg_hr4763.append('g')
     .attr('transform', 'translate(0, 20)')
     .call(generateLegend);
 
   // Generate the tooltip
-  const tooltip = svg_hr4763.append('g')
+  const tooltip_hr4763 = svg_hr4763.append('g')
     .attr('transform', 'translate(800, 30)')
     .call(generateTooltip);
 
   // Interaction with the circles
-  votes
+  votes_hr23
+    .on('mouseover', function(event, d) {
+      d3.select(this).attr('stroke-width', 8);
+
+      const text = d.Representative+', '+d.District;
+      tooltip.select('.Description').text(text);
+
+      // tooltip.style('display', 'block');
+    })
+    .on('mouseout', function() {
+      d3.select(this).attr('stroke-width', 4);
+      // tooltip.style('display', 'none');
+    })
+    .on('click', function(event,d){
+      if (d.opensecrets_url) {
+        window.open(d.opensecrets_url, '_blank');
+      }
+    });
+
+  votes_hr4763
     .on('mouseover', function(event, d) {
       d3.select(this).attr('stroke-width', 8);
 
