@@ -56,6 +56,7 @@ The majority of Democrats did not back the bill. Out of the 45 Democrats who did
 </details>
 
 <p>
+
   
 </p>
 <div id="svg-container-hr-4763" style="max-width: 100%; height: auto;">
