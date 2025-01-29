@@ -115,7 +115,7 @@ The majority of Democrats did not back the bill. Out of the 45 Democrats who did
     .attr("width", 1250)
     .attr("height", 600);
 
-  var svg_hr4763 = d3.select("#svg-container-hr-7521 svg")
+  var svg_hr7521 = d3.select("#svg-container-hr-7521 svg")
     .attr("width", 1250)
     .attr("height", 600);
 
