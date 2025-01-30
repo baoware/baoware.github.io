@@ -108,9 +108,11 @@ The majority of Democrats did not back the bill. Out of the 45 Democrats who did
   }
   
   // Pass voting data to the script
-  const data_hr23 = getVotesData("/assets/projects/house-vote-scraper/hr23.json");
-  const data_hr4763 = getVotesData("/assets/projects/house-vote-scraper/hr4763.json");
-  const data_hr7521 = getVotesData("/assets/projects/house-vote-scraper/hr7521.json");
+  const data_hr23 = await getVotesData("/assets/projects/house-vote-scraper/hr23.json");
+  const data_hr4763 = await getVotesData("/assets/projects/house-vote-scraper/hr4763.json");
+  const data_hr7521 = await getVotesData("/assets/projects/house-vote-scraper/hr7521.json");
+
+  console.log(data_hr23, data_hr4763, data_hr7521);
     
   // Parse json_data as an Array
   const dataString_hr23 = JSON.stringify(data_hr23);
