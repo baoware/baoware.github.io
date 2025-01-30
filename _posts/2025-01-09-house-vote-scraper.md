@@ -93,7 +93,7 @@ The majority of Democrats did not back the bill. Out of the 45 Democrats who did
 </div>
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
-<script>
+<script type="module">
    async function getVotesData(filePath) {
       try {
           const response = await fetch(filePath);
