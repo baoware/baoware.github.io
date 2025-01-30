@@ -11,9 +11,13 @@ collections:
   galleryPosts:
     output: true
     permalink: /gallery/:title/
+    sort_by: "date"
+    order: "descending"
   writingsPosts:
     output: true
     permalink: /writings/:title/
+    sort_by: "date"
+    order: "descending"
 
 # Layout
 
