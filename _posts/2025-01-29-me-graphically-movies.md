@@ -3,7 +3,7 @@ title: "Me, Graphically: Movies"
 layout: post
 ---
 
-### [Check out here!](https://baoware.github.io/assets/projects/movies/index.html)
+### [Check it out here!](https://baoware.github.io/assets/projects/movies/index.html)
 
 A D3.js powered svg which displays all the movies I have watched. Only has viewing functionalities for each movie and sorting by rating as of now, but I am working on sorting by genre.
 
