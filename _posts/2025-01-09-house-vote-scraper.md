@@ -153,7 +153,7 @@ The majority of Democrats did not back the bill. Out of the 45 Democrats who did
   }
 
   // Data for the legend
-  keys = [
+  const keys = [
       { index: 0, Representative: "Independent and Voted Yea", Party: "I", Vote: "Yea" },
       { index: 1, Representative: "Democrat and Voted Nay", Party: "D", Vote: "Nay" },
       { index: 2, Representative: "Republican and Did Not Vote", Party: "R", Vote: "Did Not Vote"}
