@@ -1,4 +1,4 @@
-{%- assign writingsPosts = paginator.writingsPosts | default: site.writingsPosts -%}
+{%- assign writingsPosts = paginator.writingsPosts | default: site.writingsPosts | sort: "date" | reverse -%}
 {% for post in writingsPosts %}
   <article>
     {% include meta.html post=post preview=true %}
