@@ -1,9 +1,9 @@
-{%- assign galleryPosts = paginator.galleryPosts | default: site.galleryPosts -%}
+{%- assign galleryPosts = paginator.galleryPosts | default: site.galleryPosts | sort: "date" | reverse -%}
 {% for post in galleryPosts %}
   <article>
     {% include meta.html post=post preview=true %}
     {{ post.excerpt }}
-    <div class="more"><a href="{{ post.url | relative_url }}">read more</a></div>
+    <div class="more"><a href="{{ post.url | relative_url }}">see more</a></div>
   </article>
 {% endfor %}
 
