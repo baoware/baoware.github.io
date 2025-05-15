@@ -1,4 +1,3 @@
-
 async function getRatings() {
     try {
         const response = await fetch('ratings.json');
@@ -12,6 +11,7 @@ async function getRatings() {
     }
 }
 
+//
 async function generateMovies(data){
     const dataString = JSON.stringify(data);
     const nodes = JSON.parse(dataString);
