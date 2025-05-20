@@ -1,0 +1,10 @@
+---
+layout: default
+title: "Writings"
+---
+
+{% if site.show_excerpts %}
+  {% include writings_home.html %}
+{% else %}
+  {% include writings_archive.html title="Writings Posts" %}
+{% endif %}

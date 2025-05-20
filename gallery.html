@@ -1,0 +1,11 @@
+---
+layout: default
+title: "Gallery"
+---
+
+{% if site.show_excerpts %}
+  {% include gallery_home.html %}
+{% else %}
+  {% include gallery_archive.html title="Gallery Posts" %}
+{% endif %}
+

@@ -1,0 +1,47 @@
+title: "Bao Duong"
+author: "Bao Duong"
+description: "Made with <b style=\"color: #f45;\">&lt;3</b>"
+permalink: /:title/
+lang: "en"
+excerpt_separator: "\n\n\n"
+date_format: "%B %d, %Y"
+
+# Collections
+collections:
+  galleryPosts:
+    output: true
+    permalink: /gallery/:title/
+    sort_by: "date"
+    order: "descending"
+  writingsPosts:
+    output: true
+    permalink: /writings/:title/
+    sort_by: "date"
+    order: "descending"
+
+# Layout
+
+show_excerpts: true        # show article excerpts on the home page
+show_frame: true           # adds a gray frame to the site
+show_sidebar: false        # show a sidebar instead of the usual header
+minimal: false             # use a dark header
+
+# Menu
+
+navigation:                # accepts {file, title, url, icon, sidebaricon}
+  - {file: "index.html", title: "Projects", url: "/" }
+  - {file: "gallery.html", title: "Gallery", url: "/gallery/" }
+  - {file: "writings.html", title: "Writings", url: "/writings/"}
+  - {file: "About.md", title: "About", url: "/about"}
+
+external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
+  - {title: Mail, icon: envelope, url: "mailto:rjr6zk@virginia.edu"}
+  - {title: Github, icon: github, url: "https://github.com/baoware"}
+  - {title: Linkedin, icon: linkedin, url: "https://linkedin.com/in/bao-duong-5126b123b"}
+
+comments:
+#  disqus_shortname: ""    # see https://disqus.com/
+#  isso_domain: ""         # see https://posativ.org/isso/
+
+plugins:
+ - jekyll-feed

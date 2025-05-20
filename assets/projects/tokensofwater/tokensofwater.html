@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tokens of Water</title>
+    <!-- load Prata (regular) and PT Serif (italic) from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+        href="https://fonts.googleapis.com/css2?
+        family=Prata&
+        family=PT+Serif:ital@1&
+        display=swap" 
+        rel="stylesheet">
+    <style>
+        body {
+        margin: 1em;
+        }
+        .tokens-title {
+        font-family: 'PT Serif', serif;
+        font-size: 2.5rem;
+        margin: 0.1em 0 0.1em 0;
+        color: #484747;
+        }
+        .tokens-sub {
+        font-family: 'PT Serif', serif;
+        font-style: italic;
+        font-size: 1.25rem;
+        color: #484747;
+        /* make subtitle box 3/5 of page width, left-aligned */
+        width: 70%;
+        margin: 0.1em 0 1.5em 0;
+        line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="tokens-title">Tokens of Water</h1>
+    <h2 class="tokens-sub">
+        Every 5–50 ChatGPT prompts consumes about 500 mL of water, which is equal to a typical 16.9 oz water bottle. 
+        And every day, 1 billion prompts are generated, which equates to roughly 11,600 prompts every second.
+    </h2>
+    <svg width="1760px" height="1010px">
+  
+    </svg>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script type="module">
+    const svg = d3.select("svg");
+    svg.selectAll("*").remove();
+    svg.attr("viewBox", "-10 -10 1750 1000");
+
+    // 1st square / grid parameters
+    const cols = 20, rows = 20;
+    const size = 10, gap = 5;
+    const total = cols * rows;
+
+    svg.append("rect")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("width",  size)
+        .attr("height", size)
+        .attr("fill",  "lightblue");
+
+    const highlight = svg.append("rect")
+        .attr("x", 0)                     // 1 px margin around the block
+        .attr("y", 0)
+        .attr("width",  size)          // 10 px + 1 px margin both sides
+        .attr("height", size)
+        .attr("fill", "none")              // hollow
+        .attr("stroke", "black")            // orange outline (pick any colour)
+        .attr("stroke-width", 1)
+        .attr("pointer-events", "none");   // keep clicks passing through
+
+    // narrator
+    const narrator = svg.append("text")
+        .attr("x", 0)
+        .attr("y", 45)
+        .text("This is 1 gallon of water,")
+        .style("font-family", "monospace")
+        .style("font-size", 12)
+
+    const extraNarrator = svg.append("text")
+        .attr("x", 0)
+        .attr("y", 60)
+        .text("or about 8 16.9 oz water bottles.")
+        .style("font-family", "monospace")
+        .style("font-size", 12) 
+
+    svg.append("defs").append("marker")
+        .attr("id", "arrow").attr("viewBox", "0 -5 10 10")
+        .attr("refX", 10).attr("refY", 0)
+        .attr("markerWidth", 6).attr("markerHeight", 6)
+        .attr("orient", "auto")
+        .append("path")
+        .attr("d", "M0,-5L10,0L0,5").attr("fill", "#555");
+
+    const arrow = svg.append("line")
+        .attr("x1", 30).attr("y1", 30)   // start near narrator
+        .attr("x2", 10).attr("y2", 10)   // end at square corner
+        .attr("stroke", "#555").attr("stroke-width", 1.2)
+        .attr("marker-end", "url(#arrow)");
+
+    const extraHighlight = svg.append("rect")
+        .attr("x", -3000)                     
+        .attr("y", -3000)
+        .attr("width", 125250)     
+        .attr("height", 60000)
+        .attr("fill", "none")              
+        .attr("stroke", "orange")           
+        .attr("stroke-width", 15*45)
+        .attr("pointer-events", "none")
+        .style("opacity", 0);   
+
+    // clickable comments
+    const comment = svg.append("text")
+        .attr("x", 315)
+        .attr("y", 75)
+        .text("Let's see how much water ChatGPT uses.")
+        .style("font-family", "monospace")
+        .style("font-size", 12)
+        .style("cursor", "pointer")
+        .attr("fill", "#555");
+
+    // timer read-out
+    const timerLabel = svg.append("text")
+        .attr("x", 315)
+        .attr("y", 15)
+        .style("font-family", "monospace")
+        .style("font-size", 12)
+        .text("Time elapsed: 0.000 s");
+
+    const promptLabel = svg.append("text")
+        .attr("x", 315)
+        .attr("y", 30)
+        .style("font-family", "monospace")
+        .style("font-size", 12)
+        .text("Prompts used: 0 prompts");
+
+    // gallon (square) counter
+    const gallonLabel = svg.append("text")
+        .attr("x", 315)
+        .attr("y", 45)
+        .style("font-family", "monospace")
+        .style("font-size", 12)
+        .text("Amount of water consumed: 1 gal");          // the sample square counts as #1
+
+    const householdLabel = svg.append("text")
+        .attr("x", 25360)
+        .attr("y", 1800)
+        .style("font-family", "monospace")
+        .style("font-size", 360)  
+        .text("or 1 household's daily water usage")
+        .style("opacity", 0);
+
+    const poolLabel = svg.append("text")
+        .attr("x", (142000)+8100)
+        .attr("y", 10125*5)
+        .style("font-family", "monospace")
+        .style("font-size", 8100)  
+        .text("or 1 Olympic-sized swimming pool")
+        .style("opacity", 0);
+
+    const extraExtraNarrator = svg.append("text")
+        .attr("x", -10000)
+        .attr("y", -10000)
+        .style("font-family", "monospace")
+        .style("font-size", 8100*2)  
+        .text("")
+        .style("opacity", 0);
+
+
+    const finalQuestion = svg.append("text")
+        .attr("x", -10000)
+        .attr("y", -10000)
+        .attr("font-weight", "bold")
+        .style("font-family", "monospace")
+        .style("font-size", 8100*2)  
+        .text("")
+        .style("opacity", 0);
+
+    const end = svg.append("text")
+        .attr("x", 1000000)
+        .attr("y", 850250 + 14000*5)
+        .text("Explore the scale.")
+        .attr("font-weight", "bold")
+        .style("font-family", "monospace")
+        .style("font-size", "20000px")
+        .style("cursor", "pointer")
+        .attr("fill", "#555")
+        .on("click", zoomGal)
+        .style("opacity", 0);
+
+    const extraExtraExtraNarrator = svg.append("text")
+        .attr("x", -10000)
+        .attr("y", -10000)
+        .style("font-family", "monospace")
+        .style("font-size", 8100*2)  
+        .text("")
+        .style("opacity", 0);
+
+    // zoom helper function
+    function zoomVB (svg, x1, y1, x2, y2) {
+        svg
+            .transition().duration(2000)
+            .attr("viewBox", [x1,y1,x2,y2].join(" "))
+    }
+
+    // fade out helper function
+    function fadeOut(elementArray) {
+        elementArray.forEach(element =>
+        element
+            .transition().duration(100)        
+            .style("opacity", 0)
+        );
+    }
+
+    /* --- start animation on click --------------------------- */
+    let count = 1;                    // already drew the first square
+    let startTime;
+
+    function runGrid1 () {
+        // fade narrator + arrow + highlight
+        fadeOut([narrator, arrow, highlight, extraNarrator]);
+        
+        comment.text("Running…").style("cursor", "default").on("click", null);
+        
+        startTime = performance.now();
+
+        const timer = d3.interval(() => {
+        if (count >= total) {               // grid complete -- stop
+            timer.stop();
+            comment.text("Complete");  
+
+            // fade narrators + arrow + highlight back in to next state
+            narrator 
+            .attr("x", 335)
+            .attr("y", 335)
+            .text("Every 14 seconds, ChatGPT consumes about 400 gallons of water.")
+            .transition().duration(200)
+            .style("opacity", 1);
+
+            extraNarrator
+            .attr("x", 335)
+            .attr("y", 350)
+            .text(null);                                  // clear any old string
+            
+            extraNarrator
+            .append("tspan")                             // first part, normal style
+            .text("This is equal to the ");
+            
+            extraNarrator
+            .append("tspan")                             // highlighted part
+                .attr("font-weight", "bold")               // or .attr("fill", "#cc5500")
+                .text("daily water usage of an average U.S. household.")
+
+            extraNarrator
+            .transition().duration(200)
+            .style("opacity", 1);
+            
+            arrow
+            .attr("x1", 330).attr("y1", 330)   // start near narrator
+            .attr("x2", 300).attr("y2", 300)   // end at square corner
+            .transition().duration(200)
+            .style("opacity", 1);
+        
+            highlight
+            .attr('x', -5)
+            .attr('y', -5)
+            .attr("width",  (size+5)*20 + 5)          
+            .attr("height", (size+5)*20 + 5)
+            // .attr("stroke-width", 1)
+            .transition().duration(200)
+            .style("opacity", 1);
+
+            // button to next state
+            comment
+            .attr("x", 335)
+            .attr("y", 380)
+            .text("Let's zoom out a little, and let each real-time second represent an hour.")
+            .on("click", zoomOut1) // register the next event listener
+            .style("cursor", "pointer")
+                .transition().duration(200)
+                .style("opacity", 1)
+            
+            return;
+        }
+
+        /* place next square */
+        const x = (count % cols) * (size + gap);
+        const y = Math.floor(count / cols) * (size + gap);
+
+        svg.append("rect")
+            .attr("x", x)
+            .attr("y", y)
+            .attr("width",  size)
+            .attr("height", size)
+            .attr("fill",  "lightblue");
+
+        count++;
+
+        const fmt = d3.format(",");
+
+        /* update read-outs */
+        timerLabel.text(`Time elapsed: ${(Math.round(performance.now() - startTime)/1000).toFixed(3)} s`);
+        promptLabel.text(`Prompts used: ${fmt(Math.round((performance.now() - startTime) / 1000 * 11_600))} prompts`)
+        gallonLabel.text(`Amount of water consumed: ${fmt(count)} gal`);
+        }, 35);                          // one square every 35 ms
+    }
+
+    comment.on("click", runGrid1);      // register the event listener
+
+    function zoomOut1 (){
+        zoomVB(svg, -300,-300,52500,30000)
+
+        fadeOut([narrator, extraNarrator, arrow, highlight, gallonLabel, timerLabel, comment, promptLabel])
+
+        timerLabel
+            .attr("x", 25000)
+            .attr("y", 450)
+            .style("font-size", 360)
+            .text("Time elapsed: 0.004 hr")
+            .transition().duration(200)
+            .style("opacity", 1);
+
+        promptLabel
+            .attr("x", 25000)
+            .attr("y", 900)
+            .style("font-size", 360)
+            .transition().duration(200)
+            .style("opacity", 1);
+            
+        gallonLabel
+            .attr("x", 25000)
+            .attr("y", 1350)
+            .style("font-size", 360)
+            .text("Amount of water consumed: 400 gal")
+            .transition().duration(200)
+            .style("opacity", 1);
+
+        householdLabel
+            .transition().duration(200)
+            .style("opacity", 1);
+        
+        comment
+            .attr("x", 25000)
+            .attr("y", 2700)
+            .style("font-size", 360)
+            .text("Continue")
+            .on("click", runGrid2)
+            .style("cursor", "pointer")
+            .transition().duration(2000)
+            .style("opacity", 1)
+        
+    }
+
+    function runGrid2() {
+        // disable the click & give feedback
+        comment.text("Running…")
+                .style("cursor", "default")
+                .on("click", null);
+
+        // grid params
+        const cols2 = 55;
+        const rows2 = 30;
+        const size2 = 300;
+        const gap2 = 150;
+        const total2 = cols2 * rows2;    // 1650
+        const tickRate = 20;               // ms
+        const ticksPerSec = 1000 / tickRate;  // 50
+        const boxesPerSec = 260;
+        const basePerTick = Math.floor(boxesPerSec / ticksPerSec);    // 5
+        const extraBoxes = boxesPerSec - basePerTick * ticksPerSec;  // 10
+
+        let count = 1;    // start at the second box
+        let tick  = 0;
+        // start timer offset by 4 ms so initial readout ≈ 0.004 s
+        const startTime = performance.now();
+
+        const timer = d3.interval(() => {
+        // decide boxes this tick (first 10 ticks ⇒ 6, then 5)
+        const thisTick = tick < extraBoxes
+                            ? basePerTick + 1
+                            : basePerTick;
+
+        for (let i = 0; i < thisTick && count < total2; i++, count++) {
+            const x = (count % cols2) * (size2 + gap2);
+            const y = Math.floor(count / cols2) * (size2 + gap2);
+
+            svg.append("rect")
+                .attr("x",      x)
+                .attr("y",      y)
+                .attr("width",  size2)
+                .attr("height", size2)
+                .attr("fill",   "lightblue");
+        }
+        
+        const elapsed = (((performance.now() - startTime) / 1000) + 0.004).toFixed(3);
+        tick = (tick + 1) % ticksPerSec;
+
+        const fmt = d3.format(",");
+        
+        // update elapsed‐time (in seconds) and count
+        timerLabel.text(`Time elapsed: ${elapsed} hr`);
+        promptLabel.text(`Prompts used: ${fmt((elapsed*41760000).toFixed(0))} prompts`)
+        gallonLabel.text(`Amount of water consumed: ${fmt(count*400)} gal,`);
+        householdLabel.text(`or ${fmt(count)} households' daily water usage`);
+
+        if (count >= total2) {
+            timer.stop();
+            comment.text("Complete");
+
+            // fade narrators + arrow + highlight back in to next state
+            narrator 
+            .attr("x", 350)
+            .attr("y", 14400)
+            .style("font-size", 360)
+            .text("In about 6 hours, ChatGPT consumes 660,000 gallons of water, or 1,650 households' daily water usage.")
+            .transition().duration(200)
+            .style("opacity", 1);
+
+            extraNarrator
+            .attr("x", 350)
+            .attr("y", 14950)
+            .style("font-size", 360)
+            .text(null)                                        // clear any prior text
+            
+            extraNarrator
+            .append("tspan")
+                .text("This is around the ")
+            
+            extraNarrator
+            .append("tspan")
+                .attr("font-weight", "bold")                     // or .attr("fill", "#cc5500")
+                .text("daily consumption of a small town (~2,000 households)")
+            
+            extraNarrator
+            .append("tspan")
+                .text(", or the amount of water in an Olympic-sized swimming pool.")
+                
+            extraNarrator
+            .transition().duration(200)
+            .style("opacity", 1);
+                
+            highlight
+            .attr('x', -150)
+            .attr('y', -150)
+            .attr("width",  (size2+150)*55 + 150)          
+            .attr("height", (size2+150)*30 + 150)
+            .attr("stroke-width", 30)
+            .transition().duration(200)
+            .style("opacity", 1);
+            
+            // button to next state
+            comment
+            .attr("x", 350)
+            .attr("y", 15850)
+            .text("Let's zoom out a bit more, and let each real-time second represent a day.")
+            .style("font-size", 360)
+            .on("click", zoomOut2) // register the next event listener
+            .style("cursor", "pointer")
+                .transition().duration(200)
+                .style("opacity", 1);
+            
+            return;
+        }
+        }, tickRate);
+    }
+
+    function zoomOut2(){
+        fadeOut([highlight, narrator, extraNarrator, comment, timerLabel, gallonLabel, householdLabel, promptLabel])
+
+        const x1 = -300*45/2
+        const y1 = -300*45/2
+        const x2 = 52500*45/2
+        const y2 = 30000*45/2
+        
+        zoomVB(svg, x1, y1, x2, y2);   
+
+        timerLabel
+            .attr("x", (142000))
+            .attr("y", 10125)
+            .style("font-size", 8100)
+            .text("Time elapsed: 0.250 d")
+            .transition().duration(200)
+            .style("opacity", 1);
+        
+        promptLabel
+            .attr("x", (142000))
+            .attr("y", 10125*2)
+            .style("font-size", 8100)
+            .transition().duration(200)
+            .style("opacity", 1);
+        
+        gallonLabel
+        .attr("x", (142000))
+        .attr("y", 10125*3)
+        .style("font-size", 8100)
+        .text("Amount of water consumed: 660000 gal")
+        .transition().duration(200)
+        .style("opacity", 1);
+
+        householdLabel
+        .attr("x", (142000)+8100)
+        .attr("y", 10125*4)
+        .style("font-size", 8100)
+        .text("or 1650 U.S. households' daily water usage")
+        .transition().duration(200)
+        .style("opacity", 1);
+
+        poolLabel
+        .transition().duration(200)
+        .style("opacity", 1);
+        
+        comment
+        .attr("x", (142000))
+        .attr("y",  10125*7)
+        .style("font-size", 8100)
+        .text("Continue")
+        .on("click", runGrid3)
+        .style("cursor", "pointer")
+            .transition().duration(200)
+            .style("opacity", 1)
+        
+        return;
+    }
+
+    function runGrid3(){
+        comment.text("Running…").style("cursor", "default").on("click", null);
+
+        const cols3 = 4;
+        const rows3 = 5;
+        const height3 = 13500;
+        const width3 = 24750
+        const total3  = cols3 * rows3; 
+        const gap3 = 6750;
+        const tickRate = 250;
+
+        let count = 1;
+        
+        const startTime = performance.now();
+
+        const clockTimer = d3.interval(() => {
+        const elapsed = (((performance.now() - startTime) / 1000)+0.25).toFixed(3);  
+        timerLabel.text(`Time elapsed: ${elapsed} d`);
+
+        const fmt = d3.format(",");
+        promptLabel.text(`Prompts used: ${fmt((elapsed*1000000000).toFixed(0))} prompts`);
+        if (elapsed >= 5){
+            timerLabel.text("Time elapsed: 5.000 d");
+            promptLabel.text("Prompts used: 5,000,000,000 prompts");
+            clockTimer.stop();
+        }
+        }, 50);
+        
+        const timer = d3.interval(() => {
+        if (count >= total3) {               // grid complete -- stop
+            timer.stop();
+            clockTimer.stop();   
+            comment.text("Complete");  
+
+            narrator 
+            .attr("x", 6750)
+            .attr("y", 124750)
+            .style("font-size", 8100)
+            .text("Every 5 days, ChatGPT consumes 13,200,000 gallons of water, or 33,000 households' daily water usage.")
+            .transition().duration(200)
+            .style("opacity", 1);
+
+            extraNarrator
+            .attr("x", 6750)
+            .attr("y", 124750 + 10125)
+            .style("font-size", 8100)
+            .text(null);                                           
+
+            extraNarrator.append("tspan")                   // first, normal colour
+            .text("This is about the daily consumption of a ");
+
+            extraNarrator.append("tspan")
+            .attr("font-weight", "bold")
+            .text("typical small city");
+
+            extraNarrator.append("tspan")                   // first, normal colour
+            .text(", and much more than ");
+            
+            extraNarrator.append("tspan")                   // second, orange
+            .attr("fill", "#cc5500")
+            .attr("font-weight", "bold")
+            .text("Charlottesville's (~20,000 households)");
+
+            extraNarrator.append("tspan")                   // second, orange
+            .text(".");
+            
+            extraNarrator                                   // fade the whole line in
+            .transition().duration(200)
+            .style("opacity", 1);
+        
+            highlight
+            .attr('x', -6000)
+            .attr('y', -6000)
+            .attr("width",  131250)          
+            .attr("height", 106500)
+            .attr("stroke-width", 15*45)
+            .transition().duration(200)
+            .style("opacity", 1);
+
+            // extraHighlight.transition().duration(200).style("opacity", 1);
+
+            for (let c = 0; c < 4; c++) {
+                for (let r = 2; r < 5; r++){
+                    svg.append("rect")
+                    .attr("x", c * (width3  + gap3))
+                    .attr("y", r * (height3 + gap3))   
+                    .attr("width",  width3)
+                    .attr("height", height3)
+                    .attr("fill",  "orange")
+                        .attr("opacity", 0)
+                        .transition().duration((c+40)*50)
+                        .attr("opacity", 1);
+                }
+            }
+
+            // button to next state
+            comment
+            .attr("x", 6750)
+            .attr("y", 124750 + 10125*3)
+            .text("Let's zoom out to a full year.")
+            .on("click", zoomOut3) // register the next event listener
+            .style("cursor", "pointer")
+                .transition().duration(200)
+                .style("opacity", 1)
+            
+            return;
+        }
+
+        const col = count % cols3;
+        const row = Math.floor(count / cols3);
+        const x   = col * (width3  + gap3);
+        const y   = row * (height3 + gap3);
+
+        svg.append("rect")
+            .attr("x", x)
+            .attr("y", y)
+            .attr("width",  width3)
+            .attr("height", height3)
+            .attr("fill",  "lightblue");
+
+        count++;
+
+        const fmt = d3.format(",");
+        gallonLabel.text(`Amount of water consumed: ${fmt(count*660000)} gal`);
+        householdLabel.text(`or ${fmt(count*1650)} households' daily water usage`);
+        poolLabel.text(`or ${fmt(count)} Olympic-sized swimming pools`)
+        }, tickRate); 
+    }
+
+    function zoomOut3(){
+        fadeOut([gallonLabel, householdLabel, poolLabel, highlight, extraHighlight, narrator, extraNarrator, comment, timerLabel, promptLabel])
+
+        const x1 = -300*45/1.15
+        const y1 = -300*45/1.15
+        const x2 = 52500*45/1.15
+        const y2 = 30000*45/1.15
+        
+        zoomVB(svg, x1, y1, x2, y2);
+        
+        const megaW   = 24750;
+        const megaH   = 13500;
+        const megaGap = 6750;
+        
+        // 40 full columns × 36 full rows = 1 440
+        for (let r = 0; r < 40; r++) {
+            for (let c = 0; c < 36; c++) {
+                if (r < 5 && c < 4) continue;
+                svg.append("rect")
+                    .attr("x", c * (megaW + megaGap))
+                    .attr("y", r * (megaH + megaGap))
+                    .attr("width",  megaW)
+                    .attr("height", megaH)
+                    .attr("fill",  "lightblue")
+                    .attr("opacity", 0)
+                    .transition().duration((r+c)*50)
+                    .attr("opacity", 1);
+            }
+        }
+        
+        // add the last 20 blocks in the 37ᵗʰ row (row index 36)
+        for (let c = 0; c < 20; c++) {
+        svg.append("rect")
+            .attr("x", c * (megaW + megaGap))
+            .attr("y", 40 * (megaH + megaGap))   
+            .attr("width",  megaW)
+            .attr("height", megaH)
+            .attr("fill",  "lightblue")
+                .attr("opacity", 0)
+                .transition().duration((c+40)*50)
+                .attr("opacity", 1);
+        }
+
+        for (let r = 0; r < 19; r++) {
+            for (let c = 4; c < 23; c++) {
+                svg.append("rect")
+                    .attr("x", c * (megaW + megaGap))
+                    .attr("y", r * (megaH + megaGap))
+                    .attr("width",  megaW)
+                    .attr("height", megaH)
+                    .attr("fill",  "#F0E68C")
+                    .attr("opacity", 0)
+                    .transition().duration((r+c)*50)
+                    .attr("opacity", 1);
+            }
+        }
+
+        for (let r = 5; r < 10; r++) {
+            for (let c = 0; c < 4; c++) {
+                svg.append("rect")
+                    .attr("x", c * (megaW + megaGap))
+                    .attr("y", r * (megaH + megaGap))
+                    .attr("width",  megaW)
+                    .attr("height", megaH)
+                    .attr("fill",  "#8cc751")
+                    .attr("opacity", 0)
+                    .transition().duration((r+c)*50)
+                    .attr("opacity", 1);
+            }
+        }
+
+        for (let r = 0; r < 17; r++) {
+            for (let c = 23; c < 36; c++) {
+                svg.append("rect")
+                    .attr("x", c * (megaW + megaGap))
+                    .attr("y", r * (megaH + megaGap))
+                    .attr("width",  megaW)
+                    .attr("height", megaH)
+                    .attr("fill",  "#F08080")
+                    .attr("opacity", 0)
+                    .transition().duration((r+c)*50)
+                    .attr("opacity", 1);
+            }
+        }
+
+        highlight
+        .attr('x', -6000)
+        .attr('y', -6000)
+        .attr("width", 1139250)          
+        .attr("height", 835500)
+        .attr("stroke-width", 15*45*2)
+        .transition().duration(200)
+        .style("opacity", 1);
+
+        timerLabel
+            .attr("x", 1140000)
+            .attr("y", 10125*2)
+            .style("font-size", 8100*2)
+            .text("Time elapsed: 1 yr")
+            .transition().duration(200)
+            .style("opacity", 1);
+
+        promptLabel
+        .attr("x", 1140000)
+        .attr("y", 10125*2*2)
+        .style("font-size", 8100*2)
+        .text("Prompts used: 365,000,000,000 prompts")
+        .transition().duration(200)
+        .style("opacity", 1);
+        
+        gallonLabel
+        .attr("x", 1140000)
+        .attr("y", 10125*3*2)
+        .style("font-size", 8100*2)
+        .text("Amount of water consumed: 963,600,000 gal")
+        .transition().duration(200)
+        .style("opacity", 1);
+
+        householdLabel
+        .attr("x", 1140000+8100*2)
+        .attr("y", 10125*4*2)
+        .style("font-size", 8100*2)
+        .text("or 2,409,000 households' daily water usage")
+        .transition().duration(200)
+        .style("opacity", 1);
+
+        poolLabel
+        .attr("x", 1140000+8100*2)
+        .attr("y", 10125*5*2)
+        .style("font-size", 8100*2)
+        .text("or 1,460 Olympic-sized pools")
+        .transition().duration(200)
+        .style("opacity", 1);
+
+        narrator 
+        .attr("x", 20000)
+        .attr("y", 850250)
+        .style("font-size", 8100*2)
+        .text(null);
+
+        narrator
+        .append("tspan")
+        .text("In a year, ChatGPT consumes nearly a billion gallons of water, approximately equal to the ")
+
+        narrator
+        .append("tspan")
+        .attr("font-weight", "bold")
+        .text("daily water usage of the entire DMV area,")
+
+        narrator
+        .transition().duration(200)
+        .style("opacity", 1);
+
+        extraExtraExtraNarrator
+        .attr("x", 20000)
+        .attr("y", 850250 + 15000)
+        .style("font-size", 8100*2)
+        .text();
+        
+        extraExtraExtraNarrator
+        .append("tspan")
+        .text("and engulfing the daily usages of places with data centers development like ");
+
+        extraExtraExtraNarrator
+        .append("tspan")
+        .attr("font-weight", "bold")
+        .attr("fill", "#8cc751" )
+        .text("West Des Moines, IA, ");
+
+        extraExtraExtraNarrator
+        .append("tspan")
+        .attr("font-weight", "bold")
+        .attr("fill", "#FDDA0D" )
+        .text("Pheonix, AZ, ");
+
+        extraExtraExtraNarrator
+        .append("tspan")
+        .attr("font-weight", "bold")
+        .attr("fill", "#F08080" )
+        .text("and Memphis, TN.");
+
+
+        extraExtraExtraNarrator
+        .transition().duration(200)
+        .style("opacity", 1);
+
+
+        extraNarrator
+        .attr("x", 20000)
+        .attr("y", 850250 + 15000*2)
+        .style("font-size", 8100*2)
+        .text("For context, the estimates chosen were on the lower-side: 500 mL for every 50 prompts; and average households instead of lower income households.")                             
+        .transition().duration(200)
+        .style("opacity", 1);
+
+        extraExtraNarrator
+        .attr("x", 20000)
+        .attr("y", 850250 + 15000*3)
+        .style("font-size", 8100*2)
+        .text();
+
+        extraExtraNarrator
+        .append("tspan")
+            .text("Furthermore, this figure doesn't include water used in model training, nor does it include the water usages of ");
+
+        extraExtraNarrator
+        .append("tspan")
+            .attr("font-weight", "bold")
+            .text("ALL the other popular LLMs.")
+
+        extraExtraNarrator
+        .transition().duration(200)
+        .style("opacity", 1);
+
+        finalQuestion
+        .attr("x", 20000)
+        .attr("y", 850250 + 15000*5)
+        .text("This begs the question: DO YOU REALLY NEED TO ASK LLMS ALL THOSE QUESTIONS?")
+        .transition().duration(200)
+        .style("opacity", 1);
+
+        end
+        .transition().duration(200)
+        .style("opacity", 1);
+
+    }
+
+    function zoomGal(){
+        fadeOut([highlight]);
+        zoomVB(svg, -1, -1, 175, 100);
+        release();
+    }
+
+    function release(){
+        const content = svg.insert("g", ":first-child").attr("class","content");
+
+        Array.from(svg.node().childNodes)
+        .filter(node => node !== content.node())
+        .forEach(node => content.node().appendChild(node));
+        
+        svg.call(d3.zoom()
+            .extent([[-300 * 45 / 1.05, -300 * 45 / 1.05], [52500 * 45 / 1.05, 30000 * 45 / 1.05]])
+            .on("zoom", zoomed));
+
+        const slowZoom = d3.zoom()
+            .extent([[-300 * 45 / 1.05, -300 * 45 / 1.05],
+                        [ 52500 * 45 / 1.05,  30000 * 45 / 1.05]])
+            .wheelDelta(event => 
+                -event.deltaY * (event.deltaMode ? 120 : 1) / 500
+            )
+            .on("zoom", zoomed);
+
+        svg.call(slowZoom);
+
+        // svg.call(d3.zoom().extent([[-300 * 45 / 1.05, -300 * 45 / 1.05], [52500 * 45 / 1.05, 30000 * 45 / 1.05]]).on("zoom", zoomed));
+
+        function zoomed({transform}) {
+        content.attr("transform", transform);
+        }
+    };
+  </script>
+</body>
+</html>
