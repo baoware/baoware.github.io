@@ -4,7 +4,7 @@ layout: post
 ---
 <style>
   p {
-    padding-left: 35pt;
+    padding-left: 0pt;
     text-indent: 0pt;
     line-height: 100%;
     text-align: left;
@@ -24,22 +24,23 @@ layout: post
   }
 </style>
 
+
+
+
 <div class="two-column" style="font-family: 'Book Antiqua', Palatino, serif;">
   <div class="left">
     <p>I wonder if you remember</p>
     <p>our parting hug at the airport</p> 
     <p>from all those years ago</p> 
     <p>when I first left,</p> 
-    <p>before we both knew what it meant.</p> 
-    <p> </p>
+    <p style="margin: 0 0 2.5em;">before we both knew what it meant.</p> 
     <p>I have almost forgotten it. </p>
     <p>I have almost forgotten </p>
     <p>those school day mornings </p>
     <p>when I would wake up </p>
     <p>to the soft brushing of straws, </p>
     <p>when you were sweeping </p>
-    <p>the leaves and fallen starfruit. </p>
-    <p> </p>
+    <p style="margin: 0 0 2.5em;">the leaves and fallen starfruit. </p>
     <p>And afterwards, we’d bike </p>
     <p>to that busy street market </p>
     <p>just past the busy intersection </p>
@@ -52,23 +53,20 @@ layout: post
     <p>salty, savory pâté mayonnaise </p>
     <p>and assortment of tender ham. </p>
     <p>All four for two dollars </p>
-    <p>out of your retirement pay. </p>
-    <p> </p>
+    <p style="margin: 0 0 2.5em;">out of your retirement pay. </p>
     <p>I hope you remember </p>
     <p>last summer when I was back </p>
     <p>when we would sit together, </p>
     <p>lounging on your leather sofa. </p>
     <p>You would read the daily paper </p>
-    <p>and I would read the news on my phone. </p>
-    <p> </p>
+    <p style="margin: 0 0 2.5em;">and I would read the news on my phone. </p>
     <p>And, we prayed together </p>
     <p>to my great-grandparents. </p>
     <p>and you would ask them </p>
     <p>to bless me good fortune. </p>
     <p>Three times we bowed </p>
     <p>and three fragrant incenses we burned </p>
-    <p>for each blessing. </p>
-    <p> </p>
+    <p style="margin: 0 0 2.5em;">for each blessing. </p>
     <p>And at sunrise, we biked again </p>
     <p>to that familiar pho restaurant, </p>
     <p>whose jovial owner still remembered us </p>
@@ -81,16 +79,14 @@ layout: post
     <p>and two more bowls for me, </p>
     <p>because I was the hungriest. </p>
     <p>All four for ten dollars </p>
-    <p>out of my student wages. </p>
-    <p> </p>
+    <p style="margin: 0 0 2.5em;">out of my student wages. </p>
     <p>I hope you forgive me </p>
     <p>for all those months </p>
     <p>when I had rarely called, </p>
     <p>for all those holidays </p>
     <p>that I had missed, away, </p>
     <p>for all those times I was home </p>
-    <p>with a lump in my mother tongue. </p>
-    <p> </p>
+    <p style="margin: 0 0 2.5em;">with a lump in my mother tongue. </p>
     <p>I’ll come home soon </p>
     <p>and make it up to you. </p>
     <p>And maybe someday </p>
