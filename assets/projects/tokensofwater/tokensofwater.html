@@ -901,7 +901,7 @@
             .extent([[-300 * 45 / 1.05, -300 * 45 / 1.05],
                         [ 52500 * 45 / 1.05,  30000 * 45 / 1.05]])
             .wheelDelta(event => 
-                -event.deltaY * (event.deltaMode ? 120 : 1) / 500
+                -event.deltaY * (event.deltaMode ? 120 : 1) / 250
             )
             .on("zoom", zoomed);
 
